@@ -68,8 +68,8 @@ def calc_times():
   """
   app.logger.debug("Got a JSON request");
   miles = request.args.get('miles',0,type=float)
-  distance = request.args.get('distance', 3, type=float)
-  distType = request.args.get('distType', 4, type=str)
+  distance = request.args.get('distance', 0, type=float)
+  distType = request.args.get('distType', 0, type=str)
   app.logger.debug(distType);
   app.logger.debug(miles);
   if distType == 'Miles':

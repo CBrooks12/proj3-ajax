@@ -68,7 +68,7 @@
       </select>
 </div>
 
-<div class="Iunits col-xs-12">
+<div class="Iunits col-xs-15">
    <label class="col-xs-3">Input distances:</label>
       <select class="control-label col-md-1" id="distType">
          <option>Miles</option>
