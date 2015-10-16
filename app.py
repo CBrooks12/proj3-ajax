@@ -102,29 +102,30 @@ def calc_times():
   return jsonify(result = d)
 
 def close_time_calc(miles):
-    if miles <= 200:
+    if miles <= 600:
         timeMinutes = miles/15
-    elif miles <= 400:
-        timeMinutes = miles/15
-    elif miles <= 600:
-        timeMinutes = miles/15
-    elif miles <= 1000:
-        timeMinutes = miles/11.428
     else:
-        timeMinutes = miles/11.428   
+        timeMinutes = 600/15
+        timeMinutes = timeMinutes + (miles-600)/11.428   
     return timeMinutes
 
 def open_time_calc(miles):
-    if miles <= 200:
-        timeMinutes = miles/34
-    elif miles <= 400:
-        timeMinutes = miles/32
-    elif miles <= 600:
-        timeMinutes = miles/30
-    elif miles <= 1000:
-        timeMinutes = miles/28
-    else:
-        timeMinutes = miles/26  
+    timeMinutes = 0;
+    overTime = 0;
+    if miles >= 1000:
+        overTime = (miles-1000)
+        timeMinutes = timeMinutes + overTime/26 
+    if miles >= 600:
+        overTime =  (miles-600) - overTime
+        timeMinutes = timeMinutes + overTime/28
+    if miles >= 400:
+        overTime = (miles-400) - overTime
+        timeMinutes = timeMinutes + overTime/30
+    if miles >= 200:
+        overTime = (miles-200) - overTime
+        timeMinutes+= overTime/32
+    overTime = miles - overTime
+    timeMinutes = timeMinutes + overTime/34
     return timeMinutes
 #################
 #
